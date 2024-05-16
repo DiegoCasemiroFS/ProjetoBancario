@@ -5,12 +5,12 @@ import DiegoCasemiroFS.com.github.ProjetoBancario.domain.dto.PersonaRequestDto;
 import DiegoCasemiroFS.com.github.ProjetoBancario.domain.dto.PersonaResponseDto;
 import DiegoCasemiroFS.com.github.ProjetoBancario.exception.BankObjectNotFoundException;
 import DiegoCasemiroFS.com.github.ProjetoBancario.repository.PersonaRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +22,7 @@ public class PersonaService {
   private PersonaRepository personaRepository;
 
   @Autowired
-  private ModelMapper mapper;
+  private ObjectMapper mapper;
 
   public Persona createPersona(Persona persona) {
     persona.setId(null);
@@ -44,7 +44,7 @@ public class PersonaService {
     List<Persona> personaList = personaRepository.findAll();
 
     return personaList.stream()
-        .map(p -> mapper.map(p, PersonaResponseDto.class))
+        .map(p -> mapper.convertValue(p, PersonaResponseDto.class))
         .collect(Collectors.toSet());
   }
 
@@ -56,7 +56,7 @@ public class PersonaService {
 
     Persona personaSaved = personaRepository.save(personaFounded);
 
-    return mapper.map(personaSaved, PersonaResponseDto.class);
+    return mapper.convertValue(personaSaved, PersonaResponseDto.class);
   }
 
   @Transactional

@@ -1,6 +1,6 @@
 package DiegoCasemiroFS.com.github.ProjetoBancario.utils;
 
-import org.modelmapper.ModelMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration;
 public class BankingUtils {
 
   @Bean
-  public ModelMapper mapper() {
-    return new ModelMapper();
+  public ObjectMapper objectMapper() {
+    return new ObjectMapper();
   }
 
 }

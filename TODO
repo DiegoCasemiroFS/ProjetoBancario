@@ -1,0 +1,11 @@
+
+- Implementar o databaseload
+- Implementar os endpoints para chequebook
+
+
+Projeto do dia 13/05/2024:
+1- Obter um reposítório do github MEU(LeoGuedex) e copiar os arquivos para sua máquina
+2- Usando Tecnologia de gerenciar dependencias, verifique todas as sub dependencias do projeto (effective POM)
+3- Listar todas as subdependencias em um DTO com o groupId, Artifact, Version ,(Plus parent)
+4- (PLUS-OPCIONAL) Fazer identificação, de qual dependencia(sub), pertence a qual dependencia(principal) (Mvn Tree)
+5- Caso seja possivel BUILDAR a aplicação (mvn clean install) (Dizer se o build funcionou, ou se falhou)
