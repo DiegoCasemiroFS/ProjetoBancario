@@ -7,25 +7,19 @@ import DiegoCasemiroFS.com.github.ProjetoBancario.domain.dto.AgencyRequestDto;
 import DiegoCasemiroFS.com.github.ProjetoBancario.domain.dto.AgencyResponseDto;
 import DiegoCasemiroFS.com.github.ProjetoBancario.domain.dto.AgencyUpdateRequestDto;
 import DiegoCasemiroFS.com.github.ProjetoBancario.domain.dto.BankingCheckbookDto;
+import DiegoCasemiroFS.com.github.ProjetoBancario.exception.ObjectNotFoundException;
 import DiegoCasemiroFS.com.github.ProjetoBancario.repository.AgencyRepository;
 import DiegoCasemiroFS.com.github.ProjetoBancario.repository.BankingCheckbookRepository;
 import DiegoCasemiroFS.com.github.ProjetoBancario.repository.CurrentAccountRepository;
 import DiegoCasemiroFS.com.github.ProjetoBancario.service.AgencyServiceInterface;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.Optional;
-import org.hibernate.ObjectNotFoundException;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AgencyService implements AgencyServiceInterface {
