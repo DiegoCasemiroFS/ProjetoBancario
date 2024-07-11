@@ -37,15 +37,15 @@ public class PersonaService {
     Optional<Persona> optionalPersona = personaRepository.findById(id);
 
     return optionalPersona.orElseThrow(
-        () -> new BankObjectNotFoundException("Persona Not Found with id: " + id));
+            () -> new BankObjectNotFoundException("Persona Not Found with id: " + id));
   }
 
   public Set<PersonaResponseDto> findAllPersonas() {
     List<Persona> personaList = personaRepository.findAll();
 
     return personaList.stream()
-        .map(p -> mapper.convertValue(p, PersonaResponseDto.class))
-        .collect(Collectors.toSet());
+            .map(p -> mapper.convertValue(p, PersonaResponseDto.class))
+            .collect(Collectors.toSet());
   }
 
   @Transactional

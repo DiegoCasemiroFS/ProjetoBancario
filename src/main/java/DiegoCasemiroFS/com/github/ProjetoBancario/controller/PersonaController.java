@@ -1,23 +1,18 @@
 package DiegoCasemiroFS.com.github.ProjetoBancario.controller;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 import DiegoCasemiroFS.com.github.ProjetoBancario.domain.Persona;
 import DiegoCasemiroFS.com.github.ProjetoBancario.domain.dto.PersonaRequestDto;
 import DiegoCasemiroFS.com.github.ProjetoBancario.domain.dto.PersonaResponseDto;
 import DiegoCasemiroFS.com.github.ProjetoBancario.service.PersonaService;
 import jakarta.validation.Valid;
-import java.net.URI;
-import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/personas")
@@ -37,7 +32,7 @@ public class PersonaController {
     }
 
     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-        .buildAndExpand(savedPersona.getId()).toUri();
+            .buildAndExpand(savedPersona.getId()).toUri();
 
     return ResponseEntity.created(uri).build();
   }
@@ -58,7 +53,7 @@ public class PersonaController {
 
   @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
   public ResponseEntity<PersonaResponseDto> updatePersona(@PathVariable Long id,
-      @RequestBody PersonaRequestDto personaDto) {
+                                                          @RequestBody PersonaRequestDto personaDto) {
     PersonaResponseDto responseDto = personaService.updatePersona(id, personaDto);
 
     return ResponseEntity.ok().body(responseDto);

@@ -45,15 +45,15 @@ public class BankingCheckbook {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Length(max = 6, min = 6)
-  @Column(unique = true, nullable = false)
-  private String number;
+  private Integer number;
 
   @JsonIgnore
   @Column(name = "checkbook_value")
   private BigDecimal value = new BigDecimal(0);
 
   private Integer numberOfPages;
+
+  private boolean paid;
 
   @ManyToOne
   @JoinColumn(name = "currentAccount_id")
@@ -64,4 +64,16 @@ public class BankingCheckbook {
   private LocalDateTime whenCreated;
 
 
+  public void generatedNumber(){
+    Agency agency = currentAccount.getAgency();
+
+    long checbookCount = agency.getCurrentAccounts().stream()
+            .flatMap(ca -> ca.getBankingCheckbooks().stream()).count();
+
+    if (checbookCount == 0L){
+      number = 1;
+    } else {
+      number = Math.toIntExact(checbookCount + 1);
+    }
+  }
 }

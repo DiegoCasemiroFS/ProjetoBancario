@@ -41,4 +41,5 @@ public class Extract {
   @JsonIgnore
   @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
   private LocalDateTime whenCreated;
+
 }

@@ -86,5 +86,4 @@ public class CreditCard {
   public void setIdentification(CardIdentification cardIdentification) {
     this.identification = cardIdentification.getCod();
   }
-
 }

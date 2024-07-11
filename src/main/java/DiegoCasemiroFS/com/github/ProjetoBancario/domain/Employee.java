@@ -26,4 +26,5 @@ public class Employee extends Persona {
   public void setFunction(FunctionEmployee function) {
     this.function = function.getCod();
   }
+
 }

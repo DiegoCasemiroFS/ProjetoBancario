@@ -73,5 +73,4 @@ public class CurrentAccount {
   @OneToMany(mappedBy = "currentAccount")
   private List<Withdraw> withdraws = new ArrayList<>();
 
-
 }
